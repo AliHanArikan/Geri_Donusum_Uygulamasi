@@ -1,0 +1,55 @@
+﻿@using EntityLayer.Concrete;
+@model List<RecycableMaterial>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/MainLayout/Index.cshtml";
+}
+
+
+
+
+
+
+
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="btn btn-group">
+                @foreach (var item in Model)
+                {
+                    <p class="btn btn-sm btn-outline-warning">@item.LocationCity</p>
+                }
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container p-3 bg-light">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="card">
+                        <img src="~/@item.imageUrl" class="card-img-top" width="200px" height="400px" />
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                @item.RecycableMaterialType
+                            </h5>
+                            <p class="card-text"><strong> @item.LocationCity</strong> </p>
+                            <p class="card-text ">@item.ProcessDate</p>
+                            <p class="card-text">@item.LocationFullAdress</p>
+                            <p class="card-text">@item.AppUser</p>
+                            <p class="card-text">@item.LocationDistrict</p>
+                            <p class="card-text">@item.RecycableMaterialType</p>
+                            <p class="card-text">@item.isStatus</p>
+                            <p class="card-text">@item.materialAmount</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+
+

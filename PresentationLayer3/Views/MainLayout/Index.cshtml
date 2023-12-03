@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+@await Component.InvokeAsync("_MainLayoutHeaderPartial")
+<body>
+   
+    @await Component.InvokeAsync("_MainLayoutNavbarPartial")
+
+    @await Component.InvokeAsync("_MainLayoutSideBarPartial")
+    
+    <div class="container body">
+        <div style="margin-left:25%">
+            @RenderBody()
+        </div>
+       
+       
+    </div>
+
+
+    @await Component.InvokeAsync("_MainLayoutFooterPartial")
+
+</body>
+</html>
