@@ -9,5 +9,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IRecycAbleMaterialDal : IGenericDal<RecycableMaterial>
     {
+        public List<RecycableMaterial> GetMaterialWithCityName(string cityName);   
     }
 }

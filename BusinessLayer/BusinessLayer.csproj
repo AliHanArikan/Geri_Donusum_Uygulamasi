@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Utilities\" />
     <Folder Include="ValidationRules\AppRoleValidationRules\" />
     <Folder Include="ValidationRules\CustomerAccountValidationRules\" />
     <Folder Include="ValidationRules\CustomerAccountProcessValidationRules\" />

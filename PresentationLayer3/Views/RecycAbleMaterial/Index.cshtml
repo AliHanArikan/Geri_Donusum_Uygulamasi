@@ -3,6 +3,12 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/MainLayout/Index.cshtml";
+    List<string> cities = new List<string>();
+    cities.Add("Ankara");
+    cities.Add("İzmir");
+    cities.Add("İstanbul");
+    cities.Add("Adana");
+    cities.Add("Konya");
 }
 
 
@@ -15,14 +21,21 @@
     
     <div class="container">
         <div class="row">
-            <div class="btn btn-group">
-                @foreach (var item in Model)
+            @* <div class="btn btn-group">
+                @foreach (var item in cities)
                 {
-                    <p class="btn btn-sm btn-outline-warning">@item.LocationCity</p>
+                <a href="/RecycAbleMaterial/GetMaterialWithCityName/@item.ToString()" class="btn btn-sm btn-outline-warning">@item.ToString()</a>
                 }
-            </div>
+            </div> *@
+        <div class="btn btn-group">
+            <a href="/RecycAbleMaterial/GetMaterialWithCityName/@cities[0]" class="btn btn-sm btn-outline-warning">@cities[0].ToString()</a>
+            <a href="/RecycAbleMaterial/GetMaterialWithCityName/@cities[1]" class="btn btn-sm btn-outline-warning">@cities[1].ToString()</a>
+            <a href="/RecycAbleMaterial/GetMaterialWithCityName/@cities[2].ToString()" class="btn btn-sm btn-outline-warning">@cities[1].ToString()</a>
+            <a href="/RecycAbleMaterial/GetMaterialWithCityName/@cities[3].ToString()" class="btn btn-sm btn-outline-warning">@cities[3].ToString()</a>
+
         </div>
-    </div>
+        </div>
+    </div> 
 
 
     <div class="container p-3 bg-light">

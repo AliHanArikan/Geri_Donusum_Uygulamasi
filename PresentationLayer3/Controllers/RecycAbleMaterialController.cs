@@ -27,6 +27,8 @@ namespace PresentationLayer3.Controllers
             return View(values);
         }
 
+       
+
         [HttpGet]
         public IActionResult AddMaterial()
         {
@@ -55,6 +57,13 @@ namespace PresentationLayer3.Controllers
             _recycAbleMaterialService.TInsert(recycableMaterial);
 
             return RedirectToAction("Index", "RecycAbleMaterial");
+        }
+
+        [HttpGet("RecycAbleMaterial/GetMaterialWithCityName/{cities}")]
+        public IActionResult GetMaterialWithCityName(string cities)
+        {
+            var values = _recycAbleMaterialService.TGetMaterialWithCityName(cities.Trim());
+            return View(values);
         }
     }
 }

@@ -9,5 +9,6 @@ namespace BusinessLayer.Abstract
 {
     public interface IRecycAbleMaterialService : IGenericService<RecycableMaterial>
     {
+        public List<RecycableMaterial> TGetMaterialWithCityName(string cityName);
     }
 }

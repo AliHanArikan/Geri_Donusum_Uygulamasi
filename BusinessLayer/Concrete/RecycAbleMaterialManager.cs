@@ -33,6 +33,11 @@ namespace BusinessLayer.Concrete
            return _recycAbleMaterialDal.GetByID(id);
         }
 
+        public List<RecycableMaterial> TGetMaterialWithCityName(string cityName)
+        {
+            return _recycAbleMaterialDal.GetMaterialWithCityName(cityName);
+        }
+
         public void TInsert(RecycableMaterial t)
         {
             _recycAbleMaterialDal.Insert(t);
