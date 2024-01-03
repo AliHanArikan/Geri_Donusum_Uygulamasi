@@ -65,5 +65,19 @@ namespace PresentationLayer3.Controllers
             var values = _recycAbleMaterialService.TGetMaterialWithCityName(cities.Trim());
             return View(values);
         }
+
+        public async Task<IActionResult> GetMaterialWithUserIdAsync(int userId)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var values = _recycAbleMaterialService.TGetMaterialWithUserId(user.Id);
+            return View(values);
+        }
+
+        public async Task<IActionResult> GetMaterialWithUserIdForDeleteAsync()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var values = _recycAbleMaterialService.TGetMaterialWithUserId(user.Id);
+            return View(values);
+        }
     }
 }

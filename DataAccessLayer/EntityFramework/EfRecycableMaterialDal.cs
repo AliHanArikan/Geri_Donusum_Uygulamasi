@@ -19,5 +19,13 @@ namespace DataAccessLayer.EntityFramework
                 return context.RecycableMaterials.Where(x => x.LocationCity.Trim() == cityName).ToList();
             }
         }
+
+        public List<RecycableMaterial> GetMaterialWithUserId(int userId)
+        {
+            using(var context = new Context())
+            {
+                return context.RecycableMaterials.Where(x=> x.AppUserID == userId).ToList();
+            }
+        }
     }
 }
