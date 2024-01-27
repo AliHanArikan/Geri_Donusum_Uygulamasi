@@ -14,7 +14,9 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach (var item in Model)
         {
+            <form method="post">
             <div class="col">
+
                 <div class="card">
                     <img src="~/@item.imageUrl" class="card-img-top" width="200px" height="400px" />
                     <div class="card-body">
@@ -29,10 +31,11 @@
                         <p class="card-text">@item.RecycableMaterialType</p>
                         <p class="card-text">@item.isStatus</p>
                         <p class="card-text">@item.materialAmount</p>
-                        <button class="btn btn-outline-danger" id="deleteBtn">Sil</button>
-                    </div>
+                         <a class="btn btn-outline-danger" href="/RecycAbleMaterialController/GetMaterialWithUserIdForDeleteAsync/@item.RecycableMaterialID">Sil</a>
+                     </div>
                 </div>
             </div>
+            </form>
         }
     </div>
 </div>
@@ -40,12 +43,24 @@
 
 <script>
     const deleteBtn = document.getElementById('deleteBtn');
-    $("#deleteBtn").click(function () {
+    
 
 
-        
-        console.log("silindi")
-        alert("Silmek işlemini onaylıyor musunuz?")
+    $("#deleteBtn").on("click", function () {
+        $('<div title="Uyarı">Bu bir uyarıdır.</div>').dialog({
+            buttons: {
+                "Evet": function () {
+                    alert("Kullanıcı 'Evet' yanıtını verdi.");
+                    $(this).dialog("close");
+                },
+                "Hayır": function () {
+                    alert("Kullanıcı 'Hayır' yanıtını verdi.");
+                    $(this).dialog("close");
+                }
+            }
+        });
     });
+
+   
 </script>
 

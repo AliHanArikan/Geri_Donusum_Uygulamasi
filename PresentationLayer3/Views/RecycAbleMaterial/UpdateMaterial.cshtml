@@ -1,0 +1,54 @@
+﻿@using EntityLayer.Concrete;
+@model RecycableMaterial
+@{
+    ViewData["Title"] = "UpdateMaterial";
+    Layout = "~/Views/MainLayout/Index.cshtml";
+}
+
+<h1>UpdateMaterial</h1>
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <form method="post" class="col-12">
+            <h3 class="text-center mb-4">Atık Ekleme Sayfası</h3>
+            <div class="form-group">
+                <label>Atık Id (Örn: Cam,Plastik vb.)</label>
+                <input type="text" class="form-control" asp-for="RecycableMaterialID" readonly>
+            </div>
+            <div class="form-group">
+                <label>Atık Id (Örn: Cam,Plastik vb.)</label>
+                <input type="text" class="form-control" asp-for="AppUserID" readonly>
+            </div>
+            <div class="form-group">
+                <label>Atık Tipi Giriniz (Örn: Cam,Plastik vb.)</label>
+                <input type="text" class="form-control" asp-for="RecycableMaterialType">
+            </div>
+            <div class="form-group">
+                <label for="password">Yaşadığınız Şehir</label>
+                <input type="text" class="form-control" asp-for="LocationCity">
+            </div>
+            <div class="form-group">
+                <label for="password">Yaşadığınız İlçe</label>
+                <input type="text" class="form-control" asp-for="LocationDistrict">
+            </div>
+            <div class="form-group">
+                <label for="password">Tam Adresiniz</label>
+                <input type="text" class="form-control" asp-for="LocationFullAdress">
+            </div>
+            <div class="form-group">
+                <label for="password">Atık Miktarı</label>
+                <input type="text" class="form-control" asp-for="materialAmount">
+            </div>
+            <div class="form-group">
+                <label for="password">Atık Fotoğrafı Seçiniz</label>
+                <input type="text" class="form-control" asp-for="imageUrl">
+            </div>
+            <div class="p-3 text-end">
+                <button type="submit" class="btn btn-outline-success btn-block">Atık Güncelle</button>
+
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

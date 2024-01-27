@@ -73,11 +73,56 @@ namespace PresentationLayer3.Controllers
             return View(values);
         }
 
-        public async Task<IActionResult> GetMaterialWithUserIdForDeleteAsync()
+        [HttpGet]
+        public async Task<IActionResult> GetMaterialWithUserIdForDeletetwo()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             var values = _recycAbleMaterialService.TGetMaterialWithUserId(user.Id);
             return View(values);
+        }
+
+        
+        public IActionResult  DeleteMaterial(int id)
+        {
+            var material = _recycAbleMaterialService.TGetByID(id);
+            _recycAbleMaterialService.TDelete(material);
+            return RedirectToAction("Index");
+            
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetMaterialWithUserIdForUpdate()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var values = _recycAbleMaterialService.TGetMaterialWithUserId(user.Id).ToList();
+
+            return View(values);
+        }
+
+        [HttpGet]
+        public IActionResult UpdateMaterial(int id)
+        {
+            var material = _recycAbleMaterialService.TGetByID(id);
+            ViewBag.Id = id;
+            return View(material);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateMaterialAsync(RecycableMaterial material)
+        {
+            try
+            {
+                //var user = await _userManager.FindByNameAsync(User.Identity.Name);
+                //material.AppUserID = user.Id;
+
+                _recycAbleMaterialService.TUpdate(material);
+                return RedirectToAction("Index", "RecycAbleMaterial");
+            }catch (Exception ex)
+            {
+                return RedirectToAction("Index", "RecycAbleMaterial");
+                Console.WriteLine(ex.Message);
+            }
+            
         }
     }
 }
