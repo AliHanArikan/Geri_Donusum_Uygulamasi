@@ -11,5 +11,7 @@ namespace BusinessLayer.Abstract
     {
         public List<RecycableMaterial> TGetMaterialWithCityName(string cityName);
         public List<RecycableMaterial> TGetMaterialWithUserId(int userId);
+
+        public List<RecycableMaterial> TGetMaterialWithUserIdDelivered(int userId);
     }
 }

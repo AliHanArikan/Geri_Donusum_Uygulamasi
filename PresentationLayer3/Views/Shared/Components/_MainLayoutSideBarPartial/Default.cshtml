@@ -4,7 +4,7 @@
             <img src="~/Photos/bir.jpg" alt="" width="64" height="64" class="rounded-circle me-2">
             <br />
             
-            <strong> Ahmet Yük</strong>
+            <strong> @User.Identity.Name</strong>
         </a>
        
     </div>
@@ -15,9 +15,9 @@
     <hr />
     <a href="/RecycAbleMaterial/GetMaterialWithUserIdForDeletetwo" class="w3-bar-item w3-button">Atık Sil <i class="fa fa-search"></i></a>
     <hr />
-    <a href="/RecycAbleMaterial/GetMaterialWithUserIdForDeleteUpdate" class="w3-bar-item w3-button">Atık Güncelle <i class="fa-solid fa-pen-clip"></i></a>
+    <a href="/RecycAbleMaterial/GetMaterialWithUserIdForUpdate" class="w3-bar-item w3-button">Atık Güncelle <i class="fa-solid fa-pen-clip"></i></a>
     <hr />
-    <a href="#" class="w3-bar-item w3-button">Teslim Edilen Atıklar <i class="fa-solid fa-check-double"></i></a>
+    <a href="/RecycAbleMaterial/DeliveredAsync" class="w3-bar-item w3-button">Teslim Edilen Atıklar <i class="fa-solid fa-check-double"></i></a>
     <hr />
     <a href="/NormalUser/Index" class="w3-bar-item w3-button">Hesap bilgileri Güncelle</a>
     <hr />

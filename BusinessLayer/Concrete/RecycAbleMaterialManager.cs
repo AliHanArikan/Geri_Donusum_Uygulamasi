@@ -43,6 +43,11 @@ namespace BusinessLayer.Concrete
             return _recycAbleMaterialDal.GetMaterialWithUserId(userId);
         }
 
+        public List<RecycableMaterial> TGetMaterialWithUserIdDelivered(int userId)
+        {
+            return _recycAbleMaterialDal.GetMaterialWithUserIdDelivered(userId);
+        }
+
         public void TInsert(RecycableMaterial t)
         {
             _recycAbleMaterialDal.Insert(t);

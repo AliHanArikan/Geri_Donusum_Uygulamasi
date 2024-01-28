@@ -11,5 +11,7 @@ namespace DataAccessLayer.Abstract
     {
         public List<RecycableMaterial> GetMaterialWithCityName(string cityName);  
         public List<RecycableMaterial> GetMaterialWithUserId(int userId);
+
+        public List<RecycableMaterial> GetMaterialWithUserIdDelivered(int userId);
     }
 }
