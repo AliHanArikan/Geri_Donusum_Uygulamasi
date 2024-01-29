@@ -1,0 +1,12 @@
+
+.card-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-img-top:hover {
+    opacity: 0.7;
+}
+
+

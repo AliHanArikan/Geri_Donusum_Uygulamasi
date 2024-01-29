@@ -23,9 +23,15 @@
         <div class="btn btn-group">
             <a href="/RecycAbleMaterial/GetMaterialWithCityName/@cities[0]" class="btn btn-sm btn-outline-warning">@cities[0].ToString()</a>
             <a href="/RecycAbleMaterial/GetMaterialWithCityName/@cities[1]" class="btn btn-sm btn-outline-warning">@cities[1].ToString()</a>
+            <a href="/RecycAbleMaterial/GetMaterialWithCityName/@cities[2]" class="btn btn-sm btn-outline-warning">@cities[2].ToString()</a>
+            <a href="/RecycAbleMaterial/GetMaterialWithCityName/@cities[3]" class="btn btn-sm btn-outline-warning">@cities[3].ToString()</a>
+            <a href="/RecycAbleMaterial/GetMaterialWithCityName/@cities[4]" class="btn btn-sm btn-outline-warning">@cities[4].ToString()</a>
+
+           @*  <a href="/RecycAbleMaterial/GetMaterialWithCityName/@cities[0]" class="btn btn-sm btn-outline-warning">@cities[0].ToString()</a>
+            <a href="/RecycAbleMaterial/GetMaterialWithCityName/@cities[1]" class="btn btn-sm btn-outline-warning">@cities[1].ToString()</a>
             <a href="/RecycAbleMaterial/GetMaterialWithCityName/@cities[2].ToString()" class="btn btn-sm btn-outline-warning">@cities[1].ToString()</a>
             <a href="/RecycAbleMaterial/GetMaterialWithCityName/@cities[3].ToString()" class="btn btn-sm btn-outline-warning">@cities[3].ToString()</a>
-
+ *@
         </div>
         </div>
     </div> 
@@ -50,6 +56,10 @@
                             <p class="card-text">@item.RecycableMaterialType</p>
                             <p class="card-text">@item.isStatus</p>
                             <p class="card-text">@item.materialAmount</p>
+                        <div class="btn btn-outline-success text-end">
+                            <a href="/RecycAbleMaterial/MaterialDetail/@item.RecycableMaterialID">İncele</a>
+                        </div>
+
                         </div>
                     </div>
                 </div>

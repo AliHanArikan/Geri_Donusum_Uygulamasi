@@ -126,11 +126,18 @@ namespace PresentationLayer3.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> DeliveredAsync()
+        public async Task<IActionResult> MaterialsTeslimEdilen()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             var values = _recycAbleMaterialService.TGetMaterialWithUserIdDelivered(user.Id).ToList();
             return View(values);
+        }
+
+        [HttpGet]
+        public IActionResult MaterialDetail(int id)
+        {
+            var materail = _recycAbleMaterialService.TGetByID(id);
+            return View(materail);
         }
     }
 }
