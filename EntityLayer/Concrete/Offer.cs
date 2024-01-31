@@ -10,9 +10,9 @@ namespace EntityLayer.Concrete
     {
         public int offerId {  get; set; }
     
-        public int RecyableMaterialId { get; set; }
+        public int? RecyableMaterialId { get; set; }
 
-        public RecycableMaterial RecycableMaterial { get; set; }
+        //public RecycableMaterial RecycableMaterial { get; set; }
 
         public int? SenderUserId { get; set; }
 

@@ -37,6 +37,7 @@ namespace DataAccessLayer.Migrations
                     District = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConfirmCode = table.Column<int>(type: "int", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -201,6 +202,61 @@ namespace DataAccessLayer.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Offers",
+                columns: table => new
+                {
+                    offerId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RecyableMaterialId = table.Column<int>(type: "int", nullable: true),
+                    SenderUserId = table.Column<int>(type: "int", nullable: true),
+                    ReceiverUserId = table.Column<int>(type: "int", nullable: true),
+                    offersPrice = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    isAccepted = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProcessDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Offers", x => x.offerId);
+                    table.ForeignKey(
+                        name: "FK_Offers_AspNetUsers_ReceiverUserId",
+                        column: x => x.ReceiverUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Offers_AspNetUsers_SenderUserId",
+                        column: x => x.SenderUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RecycableMaterials",
+                columns: table => new
+                {
+                    RecycableMaterialID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RecycableMaterialType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LocationCity = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LocationDistrict = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LocationFullAdress = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AppUserID = table.Column<int>(type: "int", nullable: false),
+                    ProcessDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    isStatus = table.Column<bool>(type: "bit", nullable: true),
+                    materialAmount = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    imageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RecycableMaterials", x => x.RecycableMaterialID);
+                    table.ForeignKey(
+                        name: "FK_RecycableMaterials_AspNetUsers_AppUserID",
+                        column: x => x.AppUserID,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -244,6 +300,21 @@ namespace DataAccessLayer.Migrations
                 name: "IX_CustomerAccounts_AppUserID",
                 table: "CustomerAccounts",
                 column: "AppUserID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Offers_ReceiverUserId",
+                table: "Offers",
+                column: "ReceiverUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Offers_SenderUserId",
+                table: "Offers",
+                column: "SenderUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RecycableMaterials_AppUserID",
+                table: "RecycableMaterials",
+                column: "AppUserID");
         }
 
         /// <inheritdoc />
@@ -269,6 +340,12 @@ namespace DataAccessLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "CustomerAccounts");
+
+            migrationBuilder.DropTable(
+                name: "Offers");
+
+            migrationBuilder.DropTable(
+                name: "RecycableMaterials");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

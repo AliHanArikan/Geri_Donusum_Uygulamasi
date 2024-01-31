@@ -4,7 +4,6 @@ using DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,11 +11,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240129191954_offernew_added3")]
-    partial class offernew_added3
+    partial class ContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -213,10 +210,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<int?>("ReceiverUserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RecyableMaterialId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RecycableMaterialID")
+                    b.Property<int?>("RecyableMaterialId")
                         .HasColumnType("int");
 
                     b.Property<int?>("SenderUserId")
@@ -233,8 +227,6 @@ namespace DataAccessLayer.Migrations
                     b.HasKey("offerId");
 
                     b.HasIndex("ReceiverUserId");
-
-                    b.HasIndex("RecycableMaterialID");
 
                     b.HasIndex("SenderUserId");
 
@@ -407,19 +399,11 @@ namespace DataAccessLayer.Migrations
                         .WithMany()
                         .HasForeignKey("ReceiverUserId");
 
-                    b.HasOne("EntityLayer.Concrete.RecycableMaterial", "RecycableMaterial")
-                        .WithMany()
-                        .HasForeignKey("RecycableMaterialID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("EntityLayer.Concrete.AppUser", "SenderUser")
                         .WithMany()
                         .HasForeignKey("SenderUserId");
 
                     b.Navigation("ReceiverUser");
-
-                    b.Navigation("RecycableMaterial");
 
                     b.Navigation("SenderUser");
                 });

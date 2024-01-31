@@ -45,8 +45,7 @@ namespace PresentationLayer3.Controllers
         {
             try
             {
-                var material = _recycAbleMaterialService.TGetByID(offer.RecyableMaterialId);
-
+                
                 //var recevierUser = material.AppUserID;
 
                 //offer.ReceiverUserId = recevierUser;

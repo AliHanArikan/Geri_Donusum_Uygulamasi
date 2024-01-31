@@ -38,7 +38,7 @@ namespace PresentationLayer3.Controllers
         [HttpPost]
         public async Task<IActionResult> AddMaterial(RecycableMaterialDto recycableMaterialDto)
         {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var user = await _userManager.FindByNameAsync(User.Identity?.Name);
             //RecycableMaterial recycableMaterial = _mapper.Map<RecycableMaterial>(recycableMaterialDto);
             RecycableMaterial recycableMaterial = new RecycableMaterial();
             recycableMaterial.RecycableMaterialType = recycableMaterialDto.RecycableMaterialType;
@@ -117,10 +117,10 @@ namespace PresentationLayer3.Controllers
 
                 _recycAbleMaterialService.TUpdate(material);
                 return RedirectToAction("Index", "RecycAbleMaterial");
-            }catch (Exception ex)
+            }catch (Exception)
             {
                 return RedirectToAction("Index", "RecycAbleMaterial");
-                Console.WriteLine(ex.Message);
+                
             }
             
         }
