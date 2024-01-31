@@ -1,0 +1,53 @@
+﻿@using EntityLayer.Concrete;
+@model Offer
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/MainLayout/Index.cshtml";
+}
+
+<h1 class="text-center">Teklif Verme Sayfası</h1>
+<form method="post">
+<div class="mb-3">
+    <label class="form-label">Material ID</label>
+    <input type="email" class="form-control" asp-for="RecyableMaterialId" readonly>
+</div>
+<div class="mb-3">
+    <label class="form-label">Gönderici Id</label>
+    <input type="email" class="form-control" asp-for="SenderUserId" readonly>
+</div>
+    <div class="mb-3">
+        <label class="form-label">Alıcı Id</label>
+        <input type="email" class="form-control" asp-for="ReceiverUserId" readonly>
+    </div>
+    
+<div class="mb-3">
+    <label  class="form-label">Teklif Fiyatı ve Açıklaması</label>
+    <textarea class="form-control" asp-for="offersPrice" rows="3"></textarea>
+</div>
+<button class="btn btn-outline-primary text-end"> Teklif Ver</button>
+</form>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Error Message</h4>
+                </div>
+                <div class="modal-body">
+                    <p>@TempData["ErrorMessage"]</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#myModal").modal();
+        });
+    </script>
+}

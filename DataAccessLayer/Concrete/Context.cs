@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,5 +20,9 @@ namespace DataAccessLayer.Concrete
         public DbSet<CustomerAccountProcess> CustomerAccountProcesses { get; set; }
 
         public DbSet<RecycableMaterial> RecycableMaterials { get; set;}
+
+        public DbSet<Offer> Offers { get; set; }
+
+       
     }
 }

@@ -15,6 +15,10 @@ builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Contex
 builder.Services.AddScoped<IRecycAbleMaterialDal, EfRecycableMaterialDal>();
 builder.Services.AddScoped<IRecycAbleMaterialService, RecycAbleMaterialManager>();
 
+builder.Services.AddScoped<IOfferDal, EfOfferDal>();
+builder.Services.AddScoped<IOfferService, OfferManager>();
+
+
 builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
