@@ -1,8 +1,14 @@
 ﻿@model AppUserRegisterDto
 @{
-    Layout = null;
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/MainLayout/Index.cshtml";
 }
-<!DOCTYPE html>
+
+<h1>Index</h1>
+
+
+
+@* <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Easy Cash Kayıt Formu</title>
@@ -12,25 +18,29 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body> *@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 
     <div class="container">
         <h2>Horizontal form</h2>
-        <form method="post" class="form-horizontal" >
+        <form method="post" class="form-horizontal">
             <div class="form-group">
-                <label class="control-label col-sm-2" >Adınız:</label>
+                <label class="control-label col-sm-2">Adınız:</label>
                 <div class="col-sm-10">
-                    <input type="text" asp-for="Name" class="form-control"  placeholder="Adnınızı Giriniz" >
+                    <input type="text" asp-for="Name" class="form-control" placeholder="Adnınızı Giriniz">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" >Soyadınız</label>
+                <label class="control-label col-sm-2">Soyadınız</label>
                 <div class="col-sm-10">
-                    <input type="text" asp-for="Surname" class="form-control" placeholder="Soyadınızı Giriniz" >
+                    <input type="text" asp-for="Surname" class="form-control" placeholder="Soyadınızı Giriniz">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" >Kullanıcı Adınız</label>
+                <label class="control-label col-sm-2">Kullanıcı Adınız</label>
                 <div class="col-sm-10">
                     <input type="text" asp-for="Username" class="form-control" placeholder="Kullanızı Adını Giriniz">
                 </div>
@@ -53,11 +63,10 @@
                     <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Şifrenizi Giriniz">
                 </div>
             </div>
-           
+
             <div class="form-group">
                 <label class="control-label col-sm-2">Şifre Tekrar:</label>
                 <div class="col-sm-10" asp-validation-summary="ModelOnly">
-              
                 </div>
             </div>
             <div class="form-group">
@@ -75,7 +84,7 @@
             </div>
         </form>
     </div>
-
+@* 
 </body>
-</html>
+</html> *@
 

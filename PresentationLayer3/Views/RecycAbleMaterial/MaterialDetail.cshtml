@@ -11,15 +11,27 @@
 <div class="row">
     <div class="col-sm-6">
        <div class="card-img">
-            <img src="~/@Model.imageUrl"  width="200px" height="400px" />
+            <img src="~/@Model.imageUrl"  width="400px" height="400px" />
        </div>
     </div>
     <div class="col-sm-6">
         <div class="card-body">
-            <div>
+            <h5 class="card-title">
                 @Model.RecycableMaterialType
-                @Model.LocationCity
+            </h5>
+            <p class="card-text"><strong> @Model.LocationCity</strong> </p>
+            <p class="card-text ">@Model.ProcessDate</p>
+            <p class="card-text">@Model.LocationFullAdress</p>
+            <p class="card-text">@Model.AppUser</p>
+            <p class="card-text">@Model.LocationDistrict</p>
+            <p class="card-text">@Model.RecycableMaterialType</p>
+            <p class="card-text">@Model.isStatus</p>
+            <p class="card-text">@Model.materialAmount</p>
+            
+            <div class="btn btn-outline-success text-end">
+                <a href="/OfferProccess/Index/@Model.RecycableMaterialID">Teklif ver</a>
             </div>
+
         </div>
     </div>
 </div>

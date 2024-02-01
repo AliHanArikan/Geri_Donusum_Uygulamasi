@@ -69,7 +69,8 @@ namespace PresentationLayer3.Controllers
         public IActionResult GetİncomingOffers()
         {
             var user = _userManager.FindByNameAsync(User.Identity.Name);
-            var incomingOffers = _recycAbleMaterialService.TGetMaterialWithUserId(user.Id);
+            //  var incomingOffers = _recycAbleMaterialService.TGetMaterialWithUserId(user.Id);
+            var incomingOffers = _offerService.TGetİncomingOffersWithUserId(user.Id);
             return View(incomingOffers);
         }
     }

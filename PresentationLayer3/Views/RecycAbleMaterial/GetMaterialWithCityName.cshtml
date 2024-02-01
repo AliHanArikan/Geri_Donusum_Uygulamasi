@@ -38,21 +38,24 @@
         {
             <div class="col">
                 <div class="card">
-                    <img src="~/@item.imageUrl" class="card-img-top" width="200px" height="400px" />
+                    <img src="~/@item.imageUrl" class="card-img-top" width="200px" height="200px" />
                     <div class="card-body">
                         <h5 class="card-title">
                             @item.RecycableMaterialType
                         </h5>
                         <p class="card-text"><strong> @item.LocationCity</strong> </p>
                         <p class="card-text ">@item.ProcessDate</p>
-                        <p class="card-text">@item.LocationFullAdress</p>
+                      @*   <p class="card-text">@item.LocationFullAdress</p>
                         <p class="card-text">@item.AppUser</p>
                         <p class="card-text">@item.LocationDistrict</p>
                         <p class="card-text">@item.RecycableMaterialType</p>
                         <p class="card-text">@item.isStatus</p>
-                        <p class="card-text">@item.materialAmount</p>
+                        <p class="card-text">@item.materialAmount</p> *@
                         <div class="btn btn-outline-success text-end">
-                            <a href="/RecycAbleMaterial/"></a>
+                            <a href="/RecycAbleMaterial/MaterialDetail/@item.RecycableMaterialID">İncele</a>
+                        </div>
+                        <div class="btn btn-outline-success text-end">
+                            <a href="/OfferProccess/Index/@item.RecycableMaterialID">Teklif ver</a>
                         </div>
 
                     </div>

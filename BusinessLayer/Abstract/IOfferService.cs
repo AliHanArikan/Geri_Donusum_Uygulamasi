@@ -9,5 +9,6 @@ namespace BusinessLayer.Abstract
 {
     public interface IOfferService : IGenericService<Offer>
     {
+        public List<Offer> TGetİncomingOffersWithUserId(int userId);
     }
 }

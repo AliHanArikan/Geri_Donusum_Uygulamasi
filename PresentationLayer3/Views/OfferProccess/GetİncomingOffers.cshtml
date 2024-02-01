@@ -1,0 +1,41 @@
+﻿@using EntityLayer.Concrete;
+@model List<Offer>
+@{
+    ViewData["Title"] = "GetİncomingOffers";
+    Layout = "~/Views/MainLayout/Index.cshtml";
+}
+
+<h1>GetİncomingOffers</h1>
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @item.RecyableMaterialId
+                    </h5>
+                    <p class="card-text"><strong> @item.SenderUser</strong> </p>
+                    <p class="card-text ">@item.ProcessDate</p>
+                       <p class="card-text">@item.offersPrice</p>
+                <p class="card-text">@item.isAccepted</p>
+                
+                    @* <p class="card-text">@item.RecycableMaterialType</p>
+                <p class="card-text">@item.isStatus</p>
+                <p class="card-text">@item.materialAmount</p> *@
+                    
+                    <div class="btn btn-outline-success text-end">
+                        <a href="#">Kabul Et</a>
+                    </div>
+                    <div class="btn btn-outline-success text-end">
+                        <a href="#">Reddet</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+</div>

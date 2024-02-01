@@ -11,7 +11,8 @@
     cities.Add("Konya");
 }
 
-  
+  <link rel="stylesheet" href="/css/Class3.css" />
+
     <div class="container">
         <div class="row">
             @* <div class="btn btn-group">
@@ -43,19 +44,21 @@
             {
                 <div class="col">
                     <div class="card">
-                        <img src="~/@item.imageUrl" class="card-img-top" width="200px" height="400px" />
+                        <img src="~/@item.imageUrl" class="card-img-top" width="100px" height="200px" />
                         <div class="card-body">
                             <h5 class="card-title">
                                 @item.RecycableMaterialType
                             </h5>
                             <p class="card-text"><strong> @item.LocationCity</strong> </p>
-                            <p class="card-text ">@item.ProcessDate</p>
+                             <p class="card-text">@item.materialAmount</p>
+                        <p class="card-text">@item.LocationDistrict</p>
+                            @* <p class="card-text ">@item.ProcessDate</p>
                             <p class="card-text">@item.LocationFullAdress</p>
                             <p class="card-text">@item.AppUser</p>
                             <p class="card-text">@item.LocationDistrict</p>
                             <p class="card-text">@item.RecycableMaterialType</p>
                             <p class="card-text">@item.isStatus</p>
-                            <p class="card-text">@item.materialAmount</p>
+                            <p class="card-text">@item.materialAmount</p> *@
                         <div class="btn btn-outline-success text-end">
                             <a href="/RecycAbleMaterial/MaterialDetail/@item.RecycableMaterialID">İncele</a>
                         </div>
@@ -69,6 +72,29 @@
             }
         </div>
     </div>
+<button class="open-button" onclick="openForm()">Chat</button>
+
+<div class="chat-popup" id="myForm">
+    <form class="form-container">
+       
+
+        <label for="msg"><b>Message</b></label>
+     
+        <button type="submit" class="btn" href="/RecycAbleMaterial/AddMaterial">Gelen Teklifler</button>
+        <button type="submit" class="btn" href="/OfferProccess/GetİncomingOffers">Giden Teklifler</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Kapat</button>
+    </form>
+</div>
+
+<script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+</script>
 
 
 

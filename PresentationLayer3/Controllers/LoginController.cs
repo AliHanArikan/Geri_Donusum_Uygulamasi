@@ -24,20 +24,32 @@ namespace PresentationLayer3.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(LoginViewDto loginViewDto)
         {
-            var result = await _signInManager.PasswordSignInAsync(loginViewDto.Username, loginViewDto.Password, false, true);
-            if (result.Succeeded)
+            try
             {
-                var user = await _userManager.FindByNameAsync(loginViewDto.Username);
-                if (user.EmailConfirmed == true)
+                var result = await _signInManager.PasswordSignInAsync(loginViewDto.Username, loginViewDto.Password, false, true);
+                if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "NormalUser");
+                    var user = await _userManager.FindByNameAsync(loginViewDto.Username);
+                    if (user.EmailConfirmed == true)
+                    {
+                        return RedirectToAction("Index", "NormalUser");
+                    }
+                    else
+                    {
+
+                    }
+
                 }
                 else
                 {
-
+                    TempData["ErrorMessage"] = "An error occurred: ";
                 }
-
+            }catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "An error occurred: " + ex.Message;
             }
+            
+            
             return View();
         }
 
