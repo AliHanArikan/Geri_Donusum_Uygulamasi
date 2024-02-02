@@ -51,6 +51,7 @@ namespace PresentationLayer3.Controllers
                 //offer.ReceiverUserId = recevierUser;
                 offer.isAccepted = "Beklemede";
                 offer.ProcessDate = DateTime.Now;
+                ViewBag.x = "basarili";
 
                 _offerService.TInsert(offer);
             }
@@ -66,12 +67,28 @@ namespace PresentationLayer3.Controllers
         //tekliflerim , gelen teklifler
 
         [HttpGet]
-        public IActionResult GetİncomingOffers()
+        public async Task<IActionResult> GetİncomingOffers()
         {
-            var user = _userManager.FindByNameAsync(User.Identity.Name);
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
             //  var incomingOffers = _recycAbleMaterialService.TGetMaterialWithUserId(user.Id);
             var incomingOffers = _offerService.TGetİncomingOffersWithUserId(user.Id);
+            incomingOffers =  incomingOffers.Where(x => x.isAccepted.Trim() == "Beklemede").ToList();
             return View(incomingOffers);
+        }
+
+        public async Task<IActionResult> AcceptTheOffer(int id)
+        {
+            var offer =_offerService.TGetByID(id);
+            offer.isAccepted = "KabulEdildi";
+            _offerService.TUpdate(offer);
+            return RedirectToAction("GetİncomingOffers", "OfferProccess");
+        }
+        public IActionResult DontAcceptTheOffer(int id)
+        {
+            var offer = _offerService.TGetByID(id);
+            offer.isAccepted = "KabulEdilmedi";
+            _offerService.TUpdate(offer);
+            return RedirectToAction("GetİncominOffers", "OfferProccess");
         }
     }
 }
