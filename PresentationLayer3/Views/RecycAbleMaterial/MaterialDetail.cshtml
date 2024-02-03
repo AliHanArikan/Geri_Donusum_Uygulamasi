@@ -6,16 +6,16 @@
     Layout = "~/Views/MainLayout/Index.cshtml";
 }
 
-<h1>MaterialDetail</h1>
+<h1 class="text-center">Detay sayfası</h1>
 
-<div class="row">
+<div class="row bg-warning text-center rounded-4 m-5 p-5">
     <div class="col-sm-6">
        <div class="card-img">
             <img src="~/@Model.imageUrl"  width="400px" height="400px" />
        </div>
     </div>
     <div class="col-sm-6">
-        <div class="card-body">
+        <div class="card-body ">
             <h5 class="card-title">
                 @Model.RecycableMaterialType
             </h5>

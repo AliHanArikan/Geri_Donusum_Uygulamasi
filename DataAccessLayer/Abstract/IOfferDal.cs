@@ -11,5 +11,7 @@ namespace DataAccessLayer.Abstract
     public interface IOfferDal : IGenericDal<Offer>
     {
         public List<Offer> GetİncomingOffersWithUserId(int userId);
+
+       public List<Offer> GetSendedOffer(int userId);
     }
 }

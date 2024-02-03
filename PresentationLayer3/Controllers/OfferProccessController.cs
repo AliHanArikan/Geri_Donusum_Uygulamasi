@@ -76,6 +76,29 @@ namespace PresentationLayer3.Controllers
             return View(incomingOffers);
         }
 
+        public async Task<IActionResult> GetAcceptedOffers()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var incomingOffers = _offerService.TGetİncomingOffersWithUserId(user.Id);
+            incomingOffers = incomingOffers.Where(x => x.isAccepted.Trim() == "KabulEdildi").ToList();
+            return View(incomingOffers);
+        }
+
+        public async Task<IActionResult> GetDontAcceptedOffers()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var incomingOffers = _offerService.TGetİncomingOffersWithUserId(user.Id);
+            incomingOffers = incomingOffers.Where(x => x.isAccepted.Trim() == "KabulEdilmedi").ToList();
+            return View(incomingOffers);
+        }
+
+        public async Task<IActionResult> GetSendedOffer()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity?.Name);
+            var sendedOffers = _offerService.TGetSendedOffers(user.Id);
+            return View(sendedOffers);
+        }
+
         public async Task<IActionResult> AcceptTheOffer(int id)
         {
             var offer =_offerService.TGetByID(id);

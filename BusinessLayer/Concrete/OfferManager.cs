@@ -34,6 +34,11 @@ namespace BusinessLayer.Concrete
             return _offerDal.GetByID(id);
         }
 
+        public List<Offer> TGetSendedOffers(int userId)
+        {
+            return _offerDal.GetSendedOffer(userId);
+        }
+
         public List<Offer> TGetİncomingOffersWithUserId(int userId)
         {
             return _offerDal.GetİncomingOffersWithUserId(userId);

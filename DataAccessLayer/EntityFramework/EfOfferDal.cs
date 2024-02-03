@@ -12,6 +12,14 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfOfferDal : GenericRepository<Offer>, IOfferDal
     {
+        public List<Offer> GetSendedOffer(int userId)
+        {
+            using(var context = new Context())
+            {
+                return context.Offers.Where(x => x.SenderUserId == userId).ToList();
+            }
+        }
+
         public List<Offer> GetİncomingOffersWithUserId(int userId)
         {
             using(var context = new Context())
@@ -19,5 +27,7 @@ namespace DataAccessLayer.EntityFramework
                 return context.Offers.Where( x => x.ReceiverUserId == userId).ToList();
             }
         }
+
+       
     }
 }
