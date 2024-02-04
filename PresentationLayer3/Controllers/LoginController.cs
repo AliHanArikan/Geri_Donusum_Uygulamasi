@@ -57,6 +57,12 @@ namespace PresentationLayer3.Controllers
         {
             return View();
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index");
+        }
     }
 
     

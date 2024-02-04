@@ -34,7 +34,7 @@ namespace DataAccessLayer.EntityFramework
             //here we try to find that  app UserId equals our userID and where is Status equals false
             using (var context = new Context())
             {
-                return context.RecycableMaterials.Where(x => x.AppUserID == userId).Where(y => y.isStatus == false).ToList();
+                return context.RecycableMaterials.Where(x => x.AppUserID == userId).Where(y => y.isStatus == true).ToList();
             }
         }
     }

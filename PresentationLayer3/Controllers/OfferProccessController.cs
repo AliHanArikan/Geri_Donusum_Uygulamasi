@@ -113,5 +113,22 @@ namespace PresentationLayer3.Controllers
             _offerService.TUpdate(offer);
             return RedirectToAction("GetİncominOffers", "OfferProccess");
         }
+
+        public IActionResult DeleteOffer(int id)
+        {
+            var offer = _offerService.TGetByID(id);
+            _offerService.TDelete(offer);
+            return RedirectToAction("GetSendedOffer", "OfferProccess");
+        }
+
+        public IActionResult DeliverSuccess(int id)
+        {
+            var offer = _offerService.TGetByID(id);
+            var material = _recycAbleMaterialService.TGetByID((int)offer.RecyableMaterialId);
+            material.isStatus = true;
+
+            _recycAbleMaterialService.TUpdate(material);
+            return RedirectToAction("MaterialsTeslimEdilen", "RecycAbleMaterial");
+        }
     }
 }

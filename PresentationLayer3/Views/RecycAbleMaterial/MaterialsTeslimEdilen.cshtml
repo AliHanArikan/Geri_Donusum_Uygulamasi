@@ -1,8 +1,35 @@
-﻿
+﻿@using EntityLayer.Concrete;
+@model List<RecycableMaterial>
 @{
     ViewData["Title"] = "MaterialsTeslimEdilen";
     Layout = "~/Views/MainLayout/Index.cshtml";
 }
 
-<h1>MaterialsTeslimEdilen</h1>
+<h1 class="text-center">Teslim Edilen Atıklar</h1>
+<h3 class="text-center">Tebrikler Siz Bir Kahramansınız</h3>
+<div class="container p-3 bg-light">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card">
+                    <img src="~/@item.imageUrl" class="card-img-top" width="100px" height="200px" />
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            @item.RecycableMaterialType
+                        </h5>
+                        <p class="card-text"><strong> @item.LocationCity</strong> </p>
+                        <p class="card-text">@item.materialAmount</p>
+                        <p class="card-text">@item.LocationDistrict</p>
+                        
+                        <div class="btn btn-outline-success text-end">
+                            <a style="text-decoration:none;" href="/RecycAbleMaterial/MaterialDetail/@item.RecycableMaterialID">İncele</a>
+                        </div>
+                       
 
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
