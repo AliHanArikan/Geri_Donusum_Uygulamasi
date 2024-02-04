@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PresentationLayer3.Controllers
 {
-    public class UserCompetition : Controller
+    public class UserCompetitionController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
 
-        public UserCompetition(UserManager<AppUser> userManager)
+        public UserCompetitionController(UserManager<AppUser> userManager)
         {
             _userManager = userManager;
         }
@@ -19,7 +19,12 @@ namespace PresentationLayer3.Controllers
         {
 
             var userss = await _userManager.Users.ToListAsync();
-            return View(userss);
+            //var users = from user in userss
+            //            orderby user.scrore descending
+            //            select user; var sortedUsers = users.OrderBy(u => u.Name).ToList();
+            var sortedUser = userss.OrderByDescending(x => x.scrore);
+            return View(sortedUser);
+
            
         }
     }

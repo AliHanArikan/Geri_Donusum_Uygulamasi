@@ -20,9 +20,15 @@
                     <span>Teklifi Alan: </span><p class="card-text"><strong>  @item.ReceiverUser</strong> </p>
                     <span>Tarih</span><p class="card-text ">@item.ProcessDate</p>
                     <span>Teklif</span> <p class="card-text">@item.offersPrice</p>
-                    <p class="card-text ">@item.isAccepted</p>
-                    <p class="card-text opacity-0">@item.ReceiverUser</p>
                     
+                    <p class="card-text opacity-0">@item.ReceiverUser</p>
+                    <p class="card-text ">@item.isAccepted</p>
+                    @if (item.isAccepted == "KabulEdildi")
+                    {
+                        <div class="btn btn-outline-danger text-end">
+                            <a style="text-decoration:none;" href="/OfferProccess/DeleteOffer/@item.offerId">Teslim aldım</a>
+                        </div>
+                    }
 
                     @* <p class="card-text">@item.RecycableMaterialType</p>
                 <p class="card-text">@item.isStatus</p>

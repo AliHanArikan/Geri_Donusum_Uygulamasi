@@ -18,5 +18,7 @@ namespace EntityLayer.Concrete
         public int? ConfirmCode {  get; set; }
 
         public List<CustomerAccount> CustomerAccounts { get; set; }
+
+        public int? scrore {  get; set; }
     }
 }

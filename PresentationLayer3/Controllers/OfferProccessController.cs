@@ -43,17 +43,24 @@ namespace PresentationLayer3.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(Offer offer)
         {
+            //var senderUserId = await _userManager.FindByNameAsync(User.Identity.Name);
+
             try
             {
                 
-                //var recevierUser = material.AppUserID;
+                if(offer.SenderUserId != offer.ReceiverUserId)
+                {
+                    offer.isAccepted = "Beklemede";
+                    offer.ProcessDate = DateTime.Now;
+                    ViewBag.x = "basarili";
 
-                //offer.ReceiverUserId = recevierUser;
-                offer.isAccepted = "Beklemede";
-                offer.ProcessDate = DateTime.Now;
-                ViewBag.x = "basarili";
-
-                _offerService.TInsert(offer);
+                    _offerService.TInsert(offer);
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Type1";
+                }
+               
             }
             catch (Exception ex)
             {

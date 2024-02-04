@@ -31,7 +31,19 @@
 
 @if (TempData["ErrorMessage"] != null)
 {
-    <div class="modal fade" id="myModal" role="dialog">
+    @if (TempData["ErrorMessage"].Equals("Type1"))
+    {
+        <div class="bg-danger m-5 p-5 rounded-5">
+            <p>İşleminiz gerçekleştirlemedi. Kendinize teklif gönderemezsiniz...</p>
+        </div>
+    }
+    else
+    {
+        <div class="bg-danger m-5 p-5">
+            <p>İşleminiz gerçekleştirlemedi lütfen tekli alanını boş bırakmayaını tekrar deneyiniz</p>
+        </div>
+    }
+   @*  <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -52,10 +64,8 @@
         $("#myModal").modal();
         });
 
-    </script>
-    <div class="bg-danger m-5 p-5">
-        <p>İşleminiz gerçekleştirlemedi lütfen tekli alanını boş bırakmayaını tekrar deneyiniz</p>
-    </div>
+    </script> *@
+    
 }
 @if(ViewBag.x == "basarili")
 {
