@@ -51,7 +51,9 @@ namespace PresentationLayer3.Controllers
                 if(offer.SenderUserId != offer.ReceiverUserId)
                 {
                     offer.isAccepted = "Beklemede";
-                    offer.ProcessDate = DateTime.Now;
+                    offer.ProcessDate = DateTime.UtcNow;
+                    offer.IdeliverStatus = "TeslimEdilmedi";
+                    offer.IreciveStatus = "TeslimEdilmedi";
                     ViewBag.x = "basarili";
 
                     _offerService.TInsert(offer);
@@ -121,20 +123,42 @@ namespace PresentationLayer3.Controllers
             return RedirectToAction("GetİncominOffers", "OfferProccess");
         }
 
-        public IActionResult DeleteOffer(int id)
+        public void DeleteOffer(int id)
         {
             var offer = _offerService.TGetByID(id);
             _offerService.TDelete(offer);
-            return RedirectToAction("GetSendedOffer", "OfferProccess");
+           // return RedirectToAction("GetSendedOffer", "OfferProccess");
         }
 
         public IActionResult DeliverSuccess(int id)
         {
             var offer = _offerService.TGetByID(id);
-            var material = _recycAbleMaterialService.TGetByID((int)offer.RecyableMaterialId);
-            material.isStatus = true;
+            offer.IdeliverStatus = "TeslimEdildi";
+            _offerService.TUpdate(offer);
 
-            _recycAbleMaterialService.TUpdate(material);
+            if(offer.IreciveStatus =="TeslimEdildi")
+            {
+                var material = _recycAbleMaterialService.TGetByID((int)offer.RecyableMaterialId);
+                material.isStatus = true;
+                _recycAbleMaterialService.TUpdate(material);
+            }
+
+            return RedirectToAction("MaterialsTeslimEdilen", "RecycAbleMaterial");
+        }
+
+        public IActionResult ReceiveSuccess(int id)
+        {
+            var offer = _offerService.TGetByID(id);
+            offer.IreciveStatus = "TeslimEdildi";
+            _offerService.TUpdate(offer);
+            if (offer.IdeliverStatus=="TeslimEdildi")
+            {
+                var material = _recycAbleMaterialService.TGetByID((int)offer.RecyableMaterialId);
+                material.isStatus = true;
+                _recycAbleMaterialService.TUpdate(material);
+                DeleteOffer(id);
+            }
+
             return RedirectToAction("MaterialsTeslimEdilen", "RecycAbleMaterial");
         }
     }

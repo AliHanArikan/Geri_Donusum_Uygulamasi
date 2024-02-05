@@ -24,6 +24,12 @@ namespace EntityLayer.Concrete
         public string isAccepted { get; set; }
         public DateTime ProcessDate { get; set; }
 
+        //teslim ettim mi?
+        public string? IdeliverStatus { get; set; }
+
+        //teslim aldım mı?
+        public string? IreciveStatus { get; set; }
+
         //public decimal Amount { get; set; }
         //public DateTime ProcessDate { get; set; }
         //public int? SenderID { get; set; }
