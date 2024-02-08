@@ -6,16 +6,17 @@
 
 }
 
-<h1>GetİncomingOffers</h1>
+<h1 class="text-center">Gelen Teklifler</h1>
 
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-1 g-4 m-4">
     @foreach (var item in Model)
     {
         <div class="col">
             <div class="card">
                 <div class="card-body">
                     <p class="opacity-0">@item.offerId</p>
+                    <span>Materyal Id: </span>
                     <h5 class="card-title">
                         @item.RecyableMaterialId
                     </h5>
@@ -30,10 +31,10 @@
                 <p class="card-text">@item.materialAmount</p> *@
                     
                     <div class="btn btn-outline-success text-end">
-                        <a href="/OfferProccess/AcceptTheOffer/@item.offerId">Kabul Et</a>
+                        <a style="text-decoration:none;" href="/OfferProccess/AcceptTheOffer/@item.offerId">Kabul Et</a>
                     </div>
                     <div class="btn btn-outline-success text-end">
-                        <a href="/OfferProccess/DontAcceptTheOffer/@item.offerId">Reddet</a>
+                        <a style="text-decoration:none;" href="/OfferProccess/DontAcceptTheOffer/@item.offerId">Reddet</a>
                     </div>
 
                 </div>

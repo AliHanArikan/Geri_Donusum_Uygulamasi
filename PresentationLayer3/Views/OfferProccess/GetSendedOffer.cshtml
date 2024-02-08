@@ -5,9 +5,20 @@
     Layout = "~/Views/MainLayout/Index.cshtml";
 }
 
-<h1>GetSendedOffer</h1>
+<style>
+    .card:hover {
+        transform: scale(1.1);
+        
+        /* Kartın boyutunu %20 büyütür */
+    
+    }
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
+    
+</style>
+
+<h1 class="text-center">Giden Teklifler</h1>
+
+<div class="row row-cols-1 row-cols-md-1 g-4 m-4 ">
     @foreach (var item in Model)
     {
         <div class="col">
@@ -19,7 +30,10 @@
                     </h5>
                     <span>Teklifi Alan: </span><p class="card-text"><strong>  @item.ReceiverUser</strong> </p>
                     <span>Tarih</span><p class="card-text ">@item.ProcessDate</p>
-                    <span>Teklif</span> <p class="card-text">@item.offersPrice</p>
+                    <div>
+                       <p class="card-text"> Teklif: @item.offersPrice</p>
+
+                    </div>
                     
                     <p class="card-text opacity-0">@item.ReceiverUser</p>
                     <p class="card-text ">@item.isAccepted</p>
@@ -35,7 +49,7 @@
                 <p class="card-text">@item.materialAmount</p> *@
 
                     <div class="btn btn-outline-danger text-end">
-                        <a style="text-decoration:none;" href="/OfferProccess/DeleteOffer/@item.offerId">Teklifi Sil</a>
+                        <a style="text-decoration:none;" href="/OfferProccess/DeleteOffer2/@item.offerId">Teklifi Sil</a>
                     </div>
                     
 

@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityLayer.Concrete
+namespace DtoLayer.Dtos.PostDtos
 {
-    public class Post
+    public class PostDtoView
     {
         public int PostId { get; set; }
 
         public int? UserId { get; set; }
 
-        public AppUser User { get; set; }
+        
 
         public string PostDescription { get; set; }
 
@@ -21,6 +21,8 @@ namespace EntityLayer.Concrete
 
         public DateTime DateTime { get; set; }
 
+        public string UserName { get; set; }
+        public string UserİmageUrl { get; set; }
 
     }
 }

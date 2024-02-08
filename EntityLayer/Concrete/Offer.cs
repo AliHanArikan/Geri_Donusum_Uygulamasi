@@ -9,13 +9,9 @@ namespace EntityLayer.Concrete
     public class Offer
     {
         public int offerId {  get; set; }
-    
         public int? RecyableMaterialId { get; set; }
 
-        //public RecycableMaterial RecycableMaterial { get; set; }
-
         public int? SenderUserId { get; set; }
-
         public int? ReceiverUserId { get; set; }
         public AppUser SenderUser {  get; set; }
         public AppUser ReceiverUser { get; set; }

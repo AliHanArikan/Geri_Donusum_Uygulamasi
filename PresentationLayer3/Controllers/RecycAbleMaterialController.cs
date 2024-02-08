@@ -24,6 +24,7 @@ namespace PresentationLayer3.Controllers
         public IActionResult Index()
         {
             var values = _recycAbleMaterialService.TGetAll();
+            values = values.Where(x => x.isStatus == false).ToList();
             return View(values);
         }
 
@@ -50,7 +51,7 @@ namespace PresentationLayer3.Controllers
             //recycableMaterial.AppUser = _userManager.FindByNameAsync(User.Identity.Name);
 
             recycableMaterial.AppUserID = user.Id;
-            recycableMaterial.isStatus = true;
+            recycableMaterial.isStatus = false;
             recycableMaterial.ProcessDate = DateTime.Now;
             
 

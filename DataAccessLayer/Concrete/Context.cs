@@ -23,6 +23,8 @@ namespace DataAccessLayer.Concrete
 
         public DbSet<Offer> Offers { get; set; }
 
+        public DbSet<Post> Posts { get; set; }
+
        
     }
 }

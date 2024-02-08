@@ -61,8 +61,7 @@ namespace PresentationLayer3.Controllers
                 else
                 {
                     TempData["ErrorMessage"] = "Type1";
-                }
-               
+                } 
             }
             catch (Exception ex)
             {
@@ -128,6 +127,12 @@ namespace PresentationLayer3.Controllers
             var offer = _offerService.TGetByID(id);
             _offerService.TDelete(offer);
            // return RedirectToAction("GetSendedOffer", "OfferProccess");
+        }
+        public IActionResult DeleteOffer2(int id)
+        {
+            var offer = _offerService.TGetByID(id);
+            _offerService.TDelete(offer);
+             return RedirectToAction("GetSendedOffer", "OfferProccess");
         }
 
         public IActionResult DeliverSuccess(int id)
