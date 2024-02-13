@@ -1,14 +1,27 @@
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules.AppUserValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using DtoLayer.Dtos.AppUserDtos;
 using EntityLayer.Concrete;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Identity;
+using NLog;
+using System;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddFluentValidationAutoValidation();
+
+LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nLog.config"));
+
+builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 builder.Services.AddDbContext<Context>();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
 
@@ -17,6 +30,13 @@ builder.Services.AddScoped<IRecycAbleMaterialService, RecycAbleMaterialManager>(
 
 builder.Services.AddScoped<IOfferDal, EfOfferDal>();
 builder.Services.AddScoped<IOfferService, OfferManager>();
+
+builder.Services.AddScoped<ISocialMediaDal, EfSocialMediaDal>();
+builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();
+
+builder.Services.AddScoped<IValidator<AppUserRegisterDto>, AppUserRegisterValidator>();
+
+
 
 
 builder.Services.AddAutoMapper(typeof(Program));

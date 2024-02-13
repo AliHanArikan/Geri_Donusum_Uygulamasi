@@ -53,6 +53,11 @@ namespace BusinessLayer.Concrete
             _recycAbleMaterialDal.Insert(t);
         }
 
+        public void TSave()
+        {
+           _recycAbleMaterialDal.Save();
+        }
+
         public void TUpdate(RecycableMaterial t)
         {
             _recycAbleMaterialDal.Update(t);

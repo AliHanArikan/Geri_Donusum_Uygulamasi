@@ -49,6 +49,11 @@ namespace BusinessLayer.Concrete
            _offerDal.Insert(t);
         }
 
+        public void TSave()
+        {
+           _offerDal.Save();
+        }
+
         public void TUpdate(Offer t)
         {
             _offerDal.Update(t);

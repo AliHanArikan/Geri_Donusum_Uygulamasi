@@ -1,7 +1,10 @@
 ﻿using DtoLayer.Dtos.AppUserDtos;
 using EntityLayer.Concrete;
+using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace PresentationLayer3.Controllers
 {
@@ -13,6 +16,7 @@ namespace PresentationLayer3.Controllers
         {
             _userManager = userManager;
         }
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -23,6 +27,7 @@ namespace PresentationLayer3.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(AppUserRegisterDto appUserRegisterDto)
         {
+            
             if (ModelState.IsValid)
             {
                 Random random = new Random();
@@ -40,6 +45,10 @@ namespace PresentationLayer3.Controllers
                     return RedirectToAction("Index", "ConfirmMail");
                 }
 
+            }
+            else
+            {
+               // return StatusCode(StatusCodes.Status400BadRequest, ModelState);
             }
             return View();
         }

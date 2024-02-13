@@ -14,6 +14,8 @@ namespace EntityLayer.Concrete
 
         public AppUser User { get; set; }
 
+        
+
         public string PostDescription { get; set; }
 
         public string PostImageUrl1 { get; set; }

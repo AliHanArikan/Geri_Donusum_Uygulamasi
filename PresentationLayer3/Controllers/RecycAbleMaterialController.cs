@@ -5,6 +5,7 @@ using DtoLayer.Dtos.RecycableMaterialDtos;
 using EntityLayer.Concrete;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using AspNetCore;
 
 namespace PresentationLayer3.Controllers
 {
@@ -56,6 +57,8 @@ namespace PresentationLayer3.Controllers
             
 
             _recycAbleMaterialService.TInsert(recycableMaterial);
+
+            _recycAbleMaterialService.TSave();
 
             return RedirectToAction("Index", "RecycAbleMaterial");
         }
