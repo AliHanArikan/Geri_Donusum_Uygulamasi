@@ -13,15 +13,20 @@ namespace BusinessLayer.Concrete
     public class OfferManager : IOfferService
     {
         private readonly IOfferDal _offerDal;
+        private readonly ILoggerService _loggerService;
 
-        public OfferManager(IOfferDal offerDal)
+        public OfferManager(IOfferDal offerDal, ILoggerService loggerService)
         {
             _offerDal = offerDal;
+            _loggerService = loggerService;
         }
 
         public void TDelete(Offer t)
         {
-            _offerDal.Delete(t);
+           
+                _offerDal.Delete(t);
+            
+            
         }
 
         public List<Offer> TGetAll()
@@ -49,10 +54,7 @@ namespace BusinessLayer.Concrete
            _offerDal.Insert(t);
         }
 
-        public void TSave()
-        {
-           _offerDal.Save();
-        }
+       
 
         public void TUpdate(Offer t)
         {

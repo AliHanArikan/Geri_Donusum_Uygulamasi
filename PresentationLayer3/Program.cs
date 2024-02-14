@@ -1,5 +1,8 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using BusinessLayer.DependencyResolver.Autofac;
 using BusinessLayer.ValidationRules.AppUserValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
@@ -8,8 +11,10 @@ using DtoLayer.Dtos.AppUserDtos;
 using EntityLayer.Concrete;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using NLog;
+using PresentationLayer3.Extensions;
 using System;
 using System.Reflection;
 
@@ -25,23 +30,32 @@ builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 builder.Services.AddDbContext<Context>();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
 
-builder.Services.AddScoped<IRecycAbleMaterialDal, EfRecycableMaterialDal>();
-builder.Services.AddScoped<IRecycAbleMaterialService, RecycAbleMaterialManager>();
 
-builder.Services.AddScoped<IOfferDal, EfOfferDal>();
-builder.Services.AddScoped<IOfferService, OfferManager>();
 
-builder.Services.AddScoped<ISocialMediaDal, EfSocialMediaDal>();
-builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();
+
 
 builder.Services.AddScoped<IValidator<AppUserRegisterDto>, AppUserRegisterValidator>();
 
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
+builder.Host.ConfigureContainer<ContainerBuilder>(
+   builder => builder.RegisterModule(new AutofacBusinessModule()));
 
+ 
 
 builder.Services.AddAutoMapper(typeof(Program));
 
+
+
 var app = builder.Build();
+
+var logger = app.Services.GetRequiredService<ILoggerService>();
+app.ConfigureExceptionHandler(logger);
+
+if (app.Environment.IsProduction())
+{
+    app.UseHsts();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -40,7 +40,7 @@ namespace DataAccessLayer.Repositories
             using(var context = new Context())
             {
                 context.Set<T>().Add(t);
-               // context.SaveChanges();
+                context.SaveChanges();
             }
         }
 
@@ -53,12 +53,12 @@ namespace DataAccessLayer.Repositories
             }
         }
 
-        public void Save()
-        {
-            using(var context = new Context())
-            {
-                context.SaveChanges();
-            }
-        }
+        //public void Save()
+        //{
+        //    using(var context = new Context())
+        //    {
+        //        context.SaveChanges();
+        //    }
+        //}
     }
 }

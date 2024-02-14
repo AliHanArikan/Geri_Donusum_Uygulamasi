@@ -27,4 +27,12 @@ namespace DataAccessLayer.Concrete
 
        
     }
+
+    //public class PostgreSqlDbContext : DbContext
+    //{
+    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //    {
+    //        optionsBuilder.UseNpgsql("connection_string_here");
+    //    }
+    //}
 }

@@ -38,10 +38,7 @@ namespace BusinessLayer.Concrete
            _customerAccountProcessDal.Insert(t);
         }
 
-        public void TSave()
-        {
-            _customerAccountProcessDal.Save();
-        }
+        
 
         public void TUpdate(CustomerAccountProcess t)
         {

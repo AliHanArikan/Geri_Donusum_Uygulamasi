@@ -38,10 +38,7 @@ namespace BusinessLayer.Concrete
             _socialMediaDal.Insert(t);
         }
 
-        public void TSave()
-        {
-            _socialMediaDal.Save();
-        }
+       
 
         public void TUpdate(Post t)
         {
