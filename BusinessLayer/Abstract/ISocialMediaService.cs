@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    public interface ISocialMediaService : IGenericService<Post>
+    public interface ISocialMediaService : IGenericService<Post>, IBaseService
     {
     }
 }

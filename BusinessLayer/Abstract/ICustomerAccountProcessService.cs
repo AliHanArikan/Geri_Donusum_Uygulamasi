@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    public interface ICustomerAccountProcessService : IGenericService<CustomerAccountProcess>
+    public interface ICustomerAccountProcessService : IGenericService<CustomerAccountProcess> ,IBaseService
     {
     }
 }

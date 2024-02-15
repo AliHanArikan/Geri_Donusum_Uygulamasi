@@ -5,23 +5,31 @@ using DtoLayer.Dtos.RecycableMaterialDtos;
 using EntityLayer.Concrete;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
-
+using CoreLayer.CrossCuttingConcerns.DependencyResolver.Autofac;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PresentationLayer3.Controllers
 {
+  
     public class RecycAbleMaterialController : Controller
     {
-        private readonly IRecycAbleMaterialService _recycAbleMaterialService;
+        
         private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
 
-        public RecycAbleMaterialController(IRecycAbleMaterialService recycAbleMaterialService, IMapper mapper, UserManager<AppUser> userManager)
+        private  IRecycAbleMaterialService _recycAbleMaterialService;
+        
+        public RecycAbleMaterialController(IMapper mapper, UserManager<AppUser> userManager, IRecycAbleMaterialService recycAbleMaterialService)
         {
-            _recycAbleMaterialService = recycAbleMaterialService;
+           // _recycAbleMaterialService = recycAbleMaterialService;
             _mapper = mapper;
             _userManager = userManager;
+            _recycAbleMaterialService = recycAbleMaterialService;
+           
         }
 
+        [PerformanceAspect]
+        [HttpGet]
         public IActionResult Index()
         {
             var values = _recycAbleMaterialService.TGetAll();
@@ -32,6 +40,7 @@ namespace PresentationLayer3.Controllers
        
 
         [HttpGet]
+        
         public IActionResult AddMaterial()
         {
             return View();

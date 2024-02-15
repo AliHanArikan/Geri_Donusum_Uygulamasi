@@ -17,6 +17,7 @@ using NLog;
 using PresentationLayer3.Extensions;
 using System;
 using System.Reflection;
+using CoreLayer.CrossCuttingConcerns.DependencyResolver.Autofac;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,16 +42,19 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(
    builder => builder.RegisterModule(new AutofacBusinessModule()));
 
- 
+
 
 builder.Services.AddAutoMapper(typeof(Program));
 
-
+//jwt token  configurasyonu
+//builder.Services.ConfigureJwt(builder.Configuration);
 
 var app = builder.Build();
 
+//Exception Middelware configurasyonu
 var logger = app.Services.GetRequiredService<ILoggerService>();
 app.ConfigureExceptionHandler(logger);
+//app.ConfigureInjectDependiciesHandler();
 
 if (app.Environment.IsProduction())
 {

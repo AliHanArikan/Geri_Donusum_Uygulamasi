@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class CustomerAccountManager : ICustomerAccountService
+    public class CustomerAccountManager : BaseManager, ICustomerAccountService
     {
         private readonly ICustomerAccountDal _customerAccountDal;
 

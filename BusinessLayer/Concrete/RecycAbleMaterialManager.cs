@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class RecycAbleMaterialManager : IRecycAbleMaterialService
+    public class RecycAbleMaterialManager : BaseManager, IRecycAbleMaterialService
     {
         private readonly IRecycAbleMaterialDal _recycAbleMaterialDal;
 

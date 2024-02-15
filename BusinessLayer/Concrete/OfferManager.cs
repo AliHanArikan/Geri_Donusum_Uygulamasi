@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class OfferManager : IOfferService
+    public class OfferManager : BaseManager, IOfferService
     {
         private readonly IOfferDal _offerDal;
         private readonly ILoggerService _loggerService;
@@ -23,10 +23,7 @@ namespace BusinessLayer.Concrete
 
         public void TDelete(Offer t)
         {
-           
                 _offerDal.Delete(t);
-            
-            
         }
 
         public List<Offer> TGetAll()

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    public interface IRecycAbleMaterialService : IGenericService<RecycableMaterial>
+    public interface IRecycAbleMaterialService : IGenericService<RecycableMaterial>, IBaseService
     {
         public List<RecycableMaterial> TGetMaterialWithCityName(string cityName);
         public List<RecycableMaterial> TGetMaterialWithUserId(int userId);
